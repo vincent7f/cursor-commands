@@ -19,6 +19,8 @@
      - `[Bug]` — Fix the bug in the codebase (find root cause, minimal fix).
      - `[Feature]` — Implement the feature as described (or a reasonable scope).
      - `[Idea]` — Implement the idea or document it; if implementation is small, do it; otherwise implement what’s feasible or add a short design note.
+     - `[UI]` — UI-only change (layout, animation, display, alignment); implement as described.
+     - `[Todo]` — General task or unspecified; implement as described or treat as feature/task.
    - **Implement or fix** in the codebase (edit the right files, add tests if applicable).
    - **Review before committing**:
      - Re-read the diff: ensure the change matches the issue and does not break existing behavior.

@@ -1,6 +1,6 @@
-# New — Create GitHub Issue
+# Issue — Create GitHub Issue
 
-Create a new issue on the **remote GitHub repository** and post it to the repo’s Issues. The issue is filed into one of three groups by **title prefix**: `[Bug]`, `[Feature]`, or `[Idea]`.
+Create a new issue on the **remote GitHub repository** and post it to the repo’s Issues. The issue is filed by **title prefix**: `[Bug]`, `[Feature]`, `[Idea]`, `[UI]`, or `[Todo]`.
 
 **Groups and prefixes:**
 
@@ -9,16 +9,18 @@ Create a new issue on the **remote GitHub repository** and post it to the repo�
 | bug    | `[Bug]`       | Bugs, defects, things that are broken or wrong |
 | feature| `[Feature]`   | New features, enhancements, improvements |
 | idea   | `[Idea]`      | Design ideas, suggestions, future possibilities |
+| ui     | `[UI]`        | UI-only changes: layout, animation, display, alignment, visibility |
+| *(default)* | `[Todo]` | When the user does **not** specify a type — general to-do, task, or unspecified |
 
 **Steps:**
 
 1. **Get issue content from the user**
-   - **Group**: One of `bug`, `feature`, `idea`. Infer from the user’s message (e.g. “report a bug: …”, “new feature: …”, “idea: …”) or ask once: “请选择类型：bug / feature / idea” (or “Choose type: bug / feature / idea”).
+   - **Group**: One of `bug`, `feature`, `idea`, `ui`. Infer from the user’s message (e.g. “bug: …”, “feature: …”, “idea: …”, “UI: …”). **If the user does not specify a type**, use **`[Todo]`** (do not ask).
    - **Title**: Short issue title (without the prefix). If the user only gives a sentence, use it as the title (you will add the prefix).
    - **Body** (optional): Longer description. If the user provided details, use them; otherwise leave body empty or a single line.
 
 2. **Build the issue**
-   - **Final title**: `[Bug] <title>` or `[Feature] <title>` or `[Idea] <title>` (no extra space inside brackets).
+   - **Final title**: `[Bug] <title>`, `[Feature] <title>`, `[Idea] <title>`, `[UI] <title>`, or `[Todo] <title>` (no extra space inside brackets).
    - **Body**: User’s description, or a one-line summary, or “—”.
 
 3. **Create the issue on GitHub**
@@ -37,8 +39,8 @@ Create a new issue on the **remote GitHub repository** and post it to the repo�
 
 **Rules:**
 
-- Always add exactly one prefix to the title: `[Bug]`, `[Feature]`, or `[Idea]`.
+- Always add exactly one prefix to the title: `[Bug]`, `[Feature]`, `[Idea]`, `[UI]`, or `[Todo]`. When type is not specified, use `[Todo]`.
 - Do not create a local file under `docs/bugs/` or `docs/ideas/` for this command; this command only creates a **remote GitHub issue**.
-- Prefer inferring group and title from the user’s message; only ask when unclear.
+- Prefer inferring group and title from the user’s message; if type cannot be inferred, use `[Todo]` without asking.
 
-Run this command when the user wants to open a new issue on GitHub (e.g. “/new bug: title here” or “/new create a feature issue …”).
+Run this command when the user wants to open a new issue on GitHub (e.g. “/issue bug: title here” or “/issue UI: layout fix …”).
