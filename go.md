@@ -26,7 +26,11 @@
      - `[Idea]` — Implement the idea or document it; if implementation is small, do it; otherwise implement what’s feasible or add a short design note.
      - `[UI]` — UI-only change (layout, animation, display, alignment); implement as described.
      - `[Todo]` — General task or unspecified; implement as described or treat as feature/task.
-   - **Implement or fix** in the codebase (edit the right files, add tests if applicable).
+   - **Check if already done**: Before implementing, search/inspect the codebase to see whether the described functionality is already implemented or the described bug is already fixed. If it is:
+     - Do **not** make any code changes or commit.
+     - Close the issue with a comment that it is already done (e.g. “Already implemented / 已实现，无需修改” or “Bug already fixed / 问题已修复，无需修改”). Use: `gh issue close <N> --comment "Already implemented/fixed in codebase; no change needed. 代码中已实现/已修复，无需修改。"`.
+     - Then proceed to the **next** open issue; do not implement or commit for this one.
+   - **Implement or fix** in the codebase (edit the right files, add tests if applicable) only when the above check shows it is **not** already done.
    - **Review before committing**:
      - Re-read the diff: ensure the change matches the issue and does not break existing behavior.
      - Check logic: edge cases, null/type safety, and that the fix/feature is complete.
@@ -36,11 +40,12 @@
    - Then proceed to the **next** open issue (re-fetch list if needed, since one was just closed).
 
 3. **Final reply**
-   - Summarize: branch name used (`dev-<today>`), how many issues were processed, which issue numbers were fixed/closed, and the commit hash(es). If any issue was skipped (e.g. unclear scope), say so and leave it open. Remind the user that changes are on the dev branch and can be merged to `main` when ready.
+   - Summarize: branch name used (`dev-<today>`), how many issues were processed, which were fixed with a commit, which were closed as already implemented (no code change), and the commit hash(es) where applicable. If any issue was skipped (e.g. unclear scope), say so and leave it open. Remind the user that changes are on the dev branch and can be merged to `main` when ready.
 
 **Rules:**
 
-- **One issue → one fix/implementation → one commit → then close that issue.** Do not batch multiple issues into one commit.
+- **Before implementing**, always check whether the issue is already satisfied by the current codebase; if so, close it as “already implemented/fixed” with a comment and do not commit.
+- **One issue → one fix/implementation → one commit → then close that issue.** Do not batch multiple issues into one commit. (Issues closed as already done do not require a commit.)
 - **Always review changes and logic before committing.** Do not commit without checking the diff and behavior.
 - Prefer **minimal, correct changes** for bugs; for features/ideas, implement a clear subset if the issue is large.
 - Commit messages: start with `[Cursor]`, use English, include `(closes #N)` for the issue being closed.
