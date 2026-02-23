@@ -9,6 +9,11 @@
 
 **Steps:**
 
+0. **Create and switch to a dev branch (before any other work)**
+   - Branch name: `dev-<today>`, where `<today>` is the current date `yyyyMMdd` (e.g. `dev-20260223`). **The same branch is used for the whole day** (every `/go` run on the same day uses the same branch).
+   - From repo root: if the branch already exists, run `git checkout dev-<today>`; otherwise run `git checkout -b dev-<today>`. On Windows PowerShell: `$today = Get-Date -Format "yyyyMMdd"; $branch = "dev-$today"; git rev-parse --verify $branch 2>$null; if ($LASTEXITCODE -eq 0) { git checkout $branch } else { git checkout -b $branch }`.
+   - All subsequent steps (fetch issues, fix, commit, close) run on this branch; **main is not modified directly**.
+
 1. **Fetch open issues**
    - Run: `gh issue list --state open --limit 50` (or a reasonable limit).
    - Parse the output to get issue numbers and titles. If there are no open issues, reply with “No open issues” / “暂无打开的 Issue” and stop.
@@ -31,7 +36,7 @@
    - Then proceed to the **next** open issue (re-fetch list if needed, since one was just closed).
 
 3. **Final reply**
-   - Summarize: how many issues were processed, which issue numbers were fixed/closed, and the commit hash(es). If any issue was skipped (e.g. unclear scope), say so and leave it open.
+   - Summarize: branch name used (`dev-<today>`), how many issues were processed, which issue numbers were fixed/closed, and the commit hash(es). If any issue was skipped (e.g. unclear scope), say so and leave it open. Remind the user that changes are on the dev branch and can be merged to `main` when ready.
 
 **Rules:**
 
